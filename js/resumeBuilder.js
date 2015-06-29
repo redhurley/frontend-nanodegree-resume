@@ -1,0 +1,161 @@
+var bio = {
+	"name": "Donnie Wang",
+	"role": "Product Manager",
+	"contacts": {
+		"mobile": "310.626.5910",
+		"email": "donniewang@gmail.com",
+		"github": "redhurley",
+		"twitter": "@theDonnieWang",
+		"location": "San Francisco"
+	},
+	"welcomeMsg": "Hello World!",
+	"skills": [
+		"Product Specs", 
+		"Prototyping / Wireframing", 
+		"Photoshop / Sketch", 
+		"Mixpanel / Localytics", 
+		"Usability Testing", 
+		"Product Positioning", 
+		"Obj-C / Swift", 
+		"HTML5 / CSS / JS", 
+		"PostgreSQL"
+	],
+	"picURL": "https://scontent.fsjc1-1.fna.fbcdn.net/hphotos-xta1/v/t1.0-9/11216839_10103299902076615_7689237637258141900_n.jpg?oh=0d4f5a83050af2d832aa51db9591606e&oe=55FF1544"
+}
+
+var work = {
+	"jobs": [
+		{
+			"position": "Product Management Consultant",
+			"employer": "Zepp Labs",
+			"years": "2014 - Present",
+			"location": "Los Gatos, CA",
+			"description": "Sports training system (motion sensor + mobile apps) that captures and analyzes your performance."
+		},
+		{
+			"position": "Creator",
+			"employer": "Snapvite",
+			"years": "2014 - Present",
+			"location": "San Francisco, CA",
+			"description": "Scheduling app for events with limited guest spots that sends expiring SMS invitations based on time or capacity."
+		},
+		{
+			"position": "Director of Marketing",
+			"employer": "Raptr",
+			"years": "2012 - 2014",
+			"location": "Mountain View, CA",
+			"description": "Gaming platform and community focused on performance, rewards, and social. Two direct reports."
+		},
+		{
+			"position": "Product Marketing Manager",
+			"employer": "NOOK",
+			"years": "2012",
+			"location": "Palo Alto, CA",
+			"description": "Reading apps and tablets."
+		},
+		{
+			"position": "Product Marketing Manager",
+			"employer": "HP",
+			"years": "2011",
+			"location": "Sunnyvale, CA",
+			"description": "Palm smartphones and tablets."
+		},
+		{
+			"position": "Brand Manager",
+			"employer": "Ubisoft",
+			"years": "2008 - 2011",
+			"location": "San Francisco, CA",
+			"description": "Video game marketing for Assassin’s Creed franchise and various other titles. One direct report."
+		},
+		{
+			"position": "Senior Product Manager",
+			"employer": "Topps",
+			"years": "2005 - 2008",
+			"location": "New York, NY",
+			"description": "NBA packaged goods and eTopps.com platform. Two direct reports."
+		},
+		{
+			"position": "Marketing Coordinator",
+			"employer": "Upper Deck",
+			"years": "2004 - 2005",
+			"location": "Carlsbad, CA",
+			"description": "NBA and MLB sports cards and memorabilia."
+		}
+	]
+}
+
+var education = {
+	"schools": [
+		{
+			"name": "University of Southern California",
+			"years": 2004,
+			"location": "Los Angeles, CA",
+			"major": "Business Administration"
+		},
+		{
+			"name": "General Assembly",
+			"years": 2014,
+			"location": "San Francisco, CA",
+			"major": "Product Management"
+		},
+		{
+			"name": "Tradecraft",
+			"years": 2015,
+			"location": "San Francisco, CA",
+			"major": "Engineering"
+		}
+	],
+	"onlineClasses": [
+		{
+			"name": "Udacity",
+			"years": "2015",
+			"major": "Front-End Web Developer Nanodegree",
+			"url": "https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001"
+		},
+		{
+			"name": "Codementor",
+			"years": "2014 - 2015",
+			"major": "iOS Development",
+			"url": "https://www.codementor.io/success-stories/product-manager-codementor-better-than-bootcamp"
+		}
+	]
+}
+
+var portfolio = {
+	"projects": [
+		{
+			"name": "Zepp Tennis 2.0",
+			"years": "2014 - Present",
+			"description": "Sports training system (motion sensor + mobile apps) that captures and analyzes your performance."
+		},
+		{
+			"name": "Snapvite iOS",
+			"years": "2014 - Present",
+			"description": "Scheduling app for events with limited guest spots that sends expiring SMS invitations based on time or capacity."
+		}
+	]
+}
+
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+
+var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+
+var formattedPic = HTMLbioPic.replace("%data%", bio.picURL);
+var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMsg);
+
+$("#header").append(formattedName);
+$("#header").append(formattedRole);
+$("#header").append(formattedMobile);
+$("#header").append(formattedEmail);
+$("#header").append(formattedGithub);
+$("#header").append(formattedTwitter);
+$("#header").append(formattedLocation);
+$("#header").append(formattedPic);
+$("#header").append(formattedWelcomeMsg);
+
+$("#mapDiv").append(googleMap);

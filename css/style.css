@@ -48,6 +48,10 @@ h2, h3, h4, h5 {
   padding-right: 5%;
 }
 
+li {
+  display: inline;
+}
+
 
 .date-text {
   font-style: italic;
@@ -84,11 +88,16 @@ a {
   font-size: 18px;
   color: #F3F3F3;
   line-height: 28px;
+  display: block;
 }
 
 #skillsH3 {
   color: #F5AE23;
   display: none;
+}
+
+#onlineClasses {
+  padding-left: 0;
 }
 
 .orange {
