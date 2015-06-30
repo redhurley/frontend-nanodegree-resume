@@ -131,12 +131,14 @@ var portfolio = {
 		{
 			"name": "Zepp Tennis 2.0",
 			"years": "2014 - Present",
-			"description": "Sports training system (motion sensor + mobile apps) that captures and analyzes your performance."
+			"description": "Sports training system (motion sensor + mobile apps) that captures and analyzes your performance.",
+			"imageURL": "https://cmmedia.a.ssl.fastly.net/aa1076ea4d97ff1d1a47/28206085/695x443/resample(lanczos).png"
 		},
 		{
 			"name": "Snapvite iOS",
 			"years": "2014 - Present",
-			"description": "Scheduling app for events with limited guest spots that sends expiring SMS invitations based on time or capacity."
+			"description": "Scheduling app for events with limited guest spots that sends expiring SMS invitations based on time or capacity.",
+			"imageURL": "https://cmmedia.a.ssl.fastly.net/6bc63dc183c0a5776f45/28206079/644x444.webp"
 		}
 	]
 }

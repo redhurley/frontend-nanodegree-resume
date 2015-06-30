@@ -178,6 +178,9 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 
         var formattedDescription = HTMLprojectDescription.replace("%data%", portfolio.projects[project].description);
         $(".project-entry:last").append(formattedDescription);
+
+        var formattedImageURL = HTMLprojectImage.replace("%data%", portfolio.projects[project].imageURL);
+        $(".project-entry:last").append(formattedImageURL);
       }
     }
 
