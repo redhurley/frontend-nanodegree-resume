@@ -51,174 +51,187 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   <meta name="viewport" content="width=device-width">
 </head>
 <body unresolved>
-  <div id="main">
-    <!--
-    Everything from here to the <script> tag below is the skeleton of your
-    website. Your code will add information to each of the sections of the
-    resume below. You can pretty easily figure out what each section will
-    display by looking at the id or at what's written between the <h2> tags.
-    -->
-    <div id="header" class="center-content clearfix">
-      <ul id="topContacts" class='flex-box'></ul>
+  <input type="checkbox" id="drawer-toggle" name="drawer-toggle"/>
+  <label for="drawer-toggle" id="drawer-toggle-label"></label>
+  <nav id="drawer">
+    <ul>
+      <li><a href="#topContacts">Contact</a></li>
+      <li><a href="#workExperience">Work</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#mapDiv">Where I've Lived</a></li>
+    </ul>
+    </nav>
+    <div id="page-content">
+      <div id="main">
+        <!--
+        Everything from here to the <script> tag below is the skeleton of your
+        website. Your code will add information to each of the sections of the
+        resume below. You can pretty easily figure out what each section will
+        display by looking at the id or at what's written between the <h2> tags.
+        -->
+        <div id="header" class="center-content clearfix">
+          <ul id="topContacts" class='flex-box'></ul>
+        </div>
+        <div style='clear: both;'></div>
+        <div id="workExperience" class='gray'>
+          <h2>Work Experience</h2>
+        </div>
+        <div id="projects">
+          <h2>Projects</h2>
+        </div>
+        <div id="education" class='gray'>
+          <h2>Education</h2>
+        </div>
+        <div id="mapDiv">
+          <h2>Where I've Lived and Worked</h2>
+        </div>
+        <div id="letsConnect" class='dark-gray'>
+          <h2 class='orange center-text'>Let's Connect</h2>
+            <ul id="footerContacts" class="flex-box">
+          </ul>
+        </div>
+      </div>
+
+      <!--
+      The next line tells the browser where to download the JavaScript file you'll be
+      writing. In resumeBuilder.js, you'll be writing code that builds the resume
+      dynamically when this website, index.html, is opened.
+      -->
+      <script src="js/resumeBuilder.js"></script>
+
+
+      <!--
+      These scripts are written in JavaScript. You'll be breaking them down as part of
+      a quiz. Essentially, the next few lines are checking to see if you have not
+      changed each section of the resume. If you have not made any changes to a section
+      of the resume, then that part of the resume does not show up. More on this in the
+      course.
+      -->
+
+      <script type="text/javascript">
+        // Notice how all of a sudden there's JavaScript inside this HTML
+        // document? You can write JavaScript between <script> tags. At the end of your
+        // JavaScript, don't forget the closing script tag with the slash (/).
+
+
+        // Also, this is a JavaScript style comment. You can comment in JavaScript with:
+
+        //   two slashes for all following characters on a single line, or
+
+        /*
+            an opening and closing set of slash asterisks for block comments.
+        */
+
+
+        if(document.getElementsByClassName('flex-item').length === 0) {
+          document.getElementById('topContacts').style.backgroundColor = 'gray';
+        }
+        if(document.getElementsByTagName('h1').length === 0) {
+          document.getElementById('header').style.backgroundColor = 'gray';
+        }
+        if(document.getElementsByClassName('work-entry').length === 0) {
+          document.getElementById('workExperience').style.backgroundColor = '#f1f1f1';
+        }
+        if(document.getElementsByClassName('project-entry').length === 0) {
+          document.getElementById('projects').style.backgroundColor = 'white';
+        }
+        if(document.getElementsByClassName('education-entry').length === 0) {
+          document.getElementById('education').style.backgroundColor = '#f1f1f1';
+        }
+        if(document.getElementsByClassName('flex-item').length === 0) {
+          document.getElementById('letsConnect').style.backgroundColor = 'gray';
+        }
+        if(document.getElementById('map') === null) {
+          document.getElementById('mapDiv').style.backgroundColor = 'white';
+        }
+
+        if (bio.skills.length > 0) {
+          $("#header").append(HTMLskillsStart);
+          var i = 0;
+          while (i < bio.skills.length) {
+            var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+            $("#skills").append(formattedSkill);
+            i++;
+          }
+        }
+
+        function displayWork () {
+          for (job in work.jobs) {
+            $("#workExperience").append(HTMLworkStart);
+
+            var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+            var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].position);
+            var formattedEmployerTitle = formattedEmployer + " " + formattedTitle;
+            $(".work-entry:last").append(formattedEmployerTitle);
+
+            var formattedYears = HTMLworkDates.replace("%data%", work.jobs[job].years);
+            $(".work-entry:last").append(formattedYears);
+
+            var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+            $(".work-entry:last").append(formattedLocation);
+
+            var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
+            $(".work-entry:last").append(formattedDescription);
+          }
+        }
+
+        displayWork();
+
+        projects.display = function() {
+          for (project in portfolio.projects) {
+            $("#projects").append(HTMLprojectStart);
+
+            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", portfolio.projects[project].name);
+            $(".project-entry:last").append(formattedProjectTitle);
+
+            var formattedYears = HTMLprojectDates.replace("%data%", portfolio.projects[project].years);
+            $(".project-entry:last").append(formattedYears);
+
+            var formattedDescription = HTMLprojectDescription.replace("%data%", portfolio.projects[project].description);
+            $(".project-entry:last").append(formattedDescription);
+
+            var formattedImageURL = HTMLprojectImage.replace("%data%", portfolio.projects[project].imageURL);
+            $(".project-entry:last").append(formattedImageURL);
+          }
+        }
+
+        projects.display();
+
+        education.display = function() {
+          for (school in education.schools) {
+            $("#education").append(HTMLschoolStart);
+
+            var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name);
+            $(".education-entry:last").append(formattedSchool);
+
+            var formattedYears = HTMLschoolDates.replace("%data%", education.schools[school].years);
+            $(".education-entry:last").append(formattedYears);
+
+            var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+            $(".education-entry:last").append(formattedLocation);
+
+            var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+            $(".education-entry:last").append(formattedMajor);
+          }
+          $(".education-entry:last").append(HTMLonlineClasses);
+          for (onlineClass in education.onlineClasses) {
+            var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineClasses[onlineClass].name);
+            var formattedMajor = HTMLonlineTitle.replace("%data%", education.onlineClasses[onlineClass].major);
+            var formattedClass = formattedMajor + formattedSchool;
+            $(".education-entry:last").append(formattedClass);
+
+            var formattedYears = HTMLonlineDates.replace("%data%", education.onlineClasses[onlineClass].years);
+            $(".education-entry:last").append(formattedYears);
+
+            var formattedURL = HTMLonlineURL.replace("%data%", education.onlineClasses[onlineClass].url);
+            $(".education-entry:last").append(formattedURL);        
+          }
+        }
+
+        education.display();
+
+      </script>
     </div>
-    <div style='clear: both;'></div>
-    <div id="workExperience" class='gray'>
-      <h2>Work Experience</h2>
-    </div>
-    <div id="projects">
-      <h2>Projects</h2>
-    </div>
-    <div id="education" class='gray'>
-      <h2>Education</h2>
-    </div>
-    <div id="mapDiv">
-      <h2>Where I've Lived and Worked</h2>
-    </div>
-    <div id="letsConnect" class='dark-gray'>
-      <h2 class='orange center-text'>Let's Connect</h2>
-        <ul id="footerContacts" class="flex-box">
-      </ul>
-    </div>
-  </div>
-
-  <!--
-  The next line tells the browser where to download the JavaScript file you'll be
-  writing. In resumeBuilder.js, you'll be writing code that builds the resume
-  dynamically when this website, index.html, is opened.
-  -->
-  <script src="js/resumeBuilder.js"></script>
-
-
-  <!--
-  These scripts are written in JavaScript. You'll be breaking them down as part of
-  a quiz. Essentially, the next few lines are checking to see if you have not
-  changed each section of the resume. If you have not made any changes to a section
-  of the resume, then that part of the resume does not show up. More on this in the
-  course.
-  -->
-
-  <script type="text/javascript">
-    // Notice how all of a sudden there's JavaScript inside this HTML
-    // document? You can write JavaScript between <script> tags. At the end of your
-    // JavaScript, don't forget the closing script tag with the slash (/).
-
-
-    // Also, this is a JavaScript style comment. You can comment in JavaScript with:
-
-    //   two slashes for all following characters on a single line, or
-
-    /*
-        an opening and closing set of slash asterisks for block comments.
-    */
-
-
-    if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('topContacts').style.backgroundColor = 'gray';
-    }
-    if(document.getElementsByTagName('h1').length === 0) {
-      document.getElementById('header').style.backgroundColor = 'gray';
-    }
-    if(document.getElementsByClassName('work-entry').length === 0) {
-      document.getElementById('workExperience').style.backgroundColor = '#f1f1f1';
-    }
-    if(document.getElementsByClassName('project-entry').length === 0) {
-      document.getElementById('projects').style.backgroundColor = 'white';
-    }
-    if(document.getElementsByClassName('education-entry').length === 0) {
-      document.getElementById('education').style.backgroundColor = '#f1f1f1';
-    }
-    if(document.getElementsByClassName('flex-item').length === 0) {
-      document.getElementById('letsConnect').style.backgroundColor = 'gray';
-    }
-    if(document.getElementById('map') === null) {
-      document.getElementById('mapDiv').style.backgroundColor = 'white';
-    }
-
-    if (bio.skills.length > 0) {
-      $("#header").append(HTMLskillsStart);
-      var i = 0;
-      while (i < bio.skills.length) {
-        var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-        $("#skills").append(formattedSkill);
-        i++;
-      }
-    }
-
-    function displayWork () {
-      for (job in work.jobs) {
-        $("#workExperience").append(HTMLworkStart);
-
-        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-        var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].position);
-        var formattedEmployerTitle = formattedEmployer + " " + formattedTitle;
-        $(".work-entry:last").append(formattedEmployerTitle);
-
-        var formattedYears = HTMLworkDates.replace("%data%", work.jobs[job].years);
-        $(".work-entry:last").append(formattedYears);
-
-        var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-        $(".work-entry:last").append(formattedLocation);
-
-        var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-        $(".work-entry:last").append(formattedDescription);
-      }
-    }
-
-    displayWork();
-
-    projects.display = function() {
-      for (project in portfolio.projects) {
-        $("#projects").append(HTMLprojectStart);
-
-        var formattedProjectTitle = HTMLprojectTitle.replace("%data%", portfolio.projects[project].name);
-        $(".project-entry:last").append(formattedProjectTitle);
-
-        var formattedYears = HTMLprojectDates.replace("%data%", portfolio.projects[project].years);
-        $(".project-entry:last").append(formattedYears);
-
-        var formattedDescription = HTMLprojectDescription.replace("%data%", portfolio.projects[project].description);
-        $(".project-entry:last").append(formattedDescription);
-
-        var formattedImageURL = HTMLprojectImage.replace("%data%", portfolio.projects[project].imageURL);
-        $(".project-entry:last").append(formattedImageURL);
-      }
-    }
-
-    projects.display();
-
-    education.display = function() {
-      for (school in education.schools) {
-        $("#education").append(HTMLschoolStart);
-
-        var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name);
-        $(".education-entry:last").append(formattedSchool);
-
-        var formattedYears = HTMLschoolDates.replace("%data%", education.schools[school].years);
-        $(".education-entry:last").append(formattedYears);
-
-        var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-        $(".education-entry:last").append(formattedLocation);
-
-        var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
-        $(".education-entry:last").append(formattedMajor);
-      }
-      $(".education-entry:last").append(HTMLonlineClasses);
-      for (onlineClass in education.onlineClasses) {
-        var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineClasses[onlineClass].name);
-        var formattedMajor = HTMLonlineTitle.replace("%data%", education.onlineClasses[onlineClass].major);
-        var formattedClass = formattedMajor + formattedSchool;
-        $(".education-entry:last").append(formattedClass);
-
-        var formattedYears = HTMLonlineDates.replace("%data%", education.onlineClasses[onlineClass].years);
-        $(".education-entry:last").append(formattedYears);
-
-        var formattedURL = HTMLonlineURL.replace("%data%", education.onlineClasses[onlineClass].url);
-        $(".education-entry:last").append(formattedURL);        
-      }
-    }
-
-    education.display();
-
-  </script>
 </body>
 </html>
