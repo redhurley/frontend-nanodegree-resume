@@ -11,14 +11,19 @@ var bio = {
 	"welcomeMsg": "Hello World!",
 	"skills": [
 		"Product Specs", 
-		"Prototyping / Wireframing", 
-		"Photoshop / Sketch", 
-		"Mixpanel / Localytics", 
+		"Prototyping",
+		"Wireframing", 
+		"Photoshop",
+		"Sketch", 
+		"Mixpanel",
+		"Localytics", 
 		"Usability Testing", 
 		"Product Positioning", 
-		"Obj-C / Swift", 
-		"HTML5 / CSS / JS", 
-		"PostgreSQL"
+		"Obj-C",
+		"Swift", 
+		"HTML5",
+		"CSS3",
+		"JS"
 	],
 	"picURL": "https://scontent.fsjc1-1.fna.fbcdn.net/hphotos-xta1/v/t1.0-9/11216839_10103299902076615_7689237637258141900_n.jpg?oh=0d4f5a83050af2d832aa51db9591606e&oe=55FF1544"
 }
@@ -159,3 +164,9 @@ $("#header").append(formattedPic);
 $("#header").append(formattedWelcomeMsg);
 
 $("#mapDiv").append(googleMap);
+
+$("#footerContacts").append(formattedMobile);
+$("#footerContacts").append(formattedEmail);
+$("#footerContacts").append(formattedGithub);
+$("#footerContacts").append(formattedTwitter);
+$("#footerContacts").append(formattedLocation);
