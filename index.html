@@ -123,7 +123,6 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
             an opening and closing set of slash asterisks for block comments.
         */
 
-
         if(document.getElementsByClassName('flex-item').length === 0) {
           document.getElementById('topContacts').style.backgroundColor = 'gray';
         }
@@ -145,91 +144,6 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
         if(document.getElementById('map') === null) {
           document.getElementById('mapDiv').style.backgroundColor = 'white';
         }
-
-        if (bio.skills.length > 0) {
-          $("#header").append(HTMLskillsStart);
-          var i = 0;
-          while (i < bio.skills.length) {
-            var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
-            $("#skills").append(formattedSkill);
-            i++;
-          }
-        }
-
-        function displayWork () {
-          for (job in work.jobs) {
-            $("#workExperience").append(HTMLworkStart);
-
-            var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
-            var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].position);
-            var formattedEmployerTitle = formattedEmployer + " " + formattedTitle;
-            $(".work-entry:last").append(formattedEmployerTitle);
-
-            var formattedYears = HTMLworkDates.replace("%data%", work.jobs[job].years);
-            $(".work-entry:last").append(formattedYears);
-
-            var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-            $(".work-entry:last").append(formattedLocation);
-
-            var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
-            $(".work-entry:last").append(formattedDescription);
-          }
-        }
-
-        displayWork();
-
-        projects.display = function() {
-          for (project in portfolio.projects) {
-            $("#projects").append(HTMLprojectStart);
-
-            var formattedProjectTitle = HTMLprojectTitle.replace("%data%", portfolio.projects[project].name);
-            $(".project-entry:last").append(formattedProjectTitle);
-
-            var formattedYears = HTMLprojectDates.replace("%data%", portfolio.projects[project].years);
-            $(".project-entry:last").append(formattedYears);
-
-            var formattedDescription = HTMLprojectDescription.replace("%data%", portfolio.projects[project].description);
-            $(".project-entry:last").append(formattedDescription);
-
-            var formattedImageURL = HTMLprojectImage.replace("%data%", portfolio.projects[project].imageURL);
-            $(".project-entry:last").append(formattedImageURL);
-          }
-        }
-
-        projects.display();
-
-        education.display = function() {
-          for (school in education.schools) {
-            $("#education").append(HTMLschoolStart);
-
-            var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name);
-            $(".education-entry:last").append(formattedSchool);
-
-            var formattedYears = HTMLschoolDates.replace("%data%", education.schools[school].years);
-            $(".education-entry:last").append(formattedYears);
-
-            var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-            $(".education-entry:last").append(formattedLocation);
-
-            var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
-            $(".education-entry:last").append(formattedMajor);
-          }
-          $(".education-entry:last").append(HTMLonlineClasses);
-          for (onlineClass in education.onlineClasses) {
-            var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineClasses[onlineClass].name);
-            var formattedMajor = HTMLonlineTitle.replace("%data%", education.onlineClasses[onlineClass].major);
-            var formattedClass = formattedMajor + formattedSchool;
-            $(".education-entry:last").append(formattedClass);
-
-            var formattedYears = HTMLonlineDates.replace("%data%", education.onlineClasses[onlineClass].years);
-            $(".education-entry:last").append(formattedYears);
-
-            var formattedURL = HTMLonlineURL.replace("%data%", education.onlineClasses[onlineClass].url);
-            $(".education-entry:last").append(formattedURL);        
-          }
-        }
-
-        education.display();
 
       </script>
     </div>
